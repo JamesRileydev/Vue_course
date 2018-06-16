@@ -1,0 +1,44 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="vue.js"></script>
+  <title>Document</title>
+</head>
+<body>
+
+<div id="app">
+<input type="text" v-model="name">
+<p>{{ name }}</p>
+
+<button v-on:click="counter++">Increase</button>
+<button v-on:click="counter--">Decrease</button>
+<button v-on:click="secondCounter++">Increase</button>
+<p>Counter: {{ counter }}</p>
+<p>Result: {{ result() }}</p>
+</div>
+
+<script>
+  new Vue({
+    el: '#app',
+    data: {
+      name: 'Jim',
+      counter: 0,
+      secondCounter: 0
+    },
+    computed: {
+      output: function() {
+        return this.counter > 5 ? 'Greater than 5' : 'Less than 5';        
+      }
+    },
+    methods: {
+      result: function() {
+        return this.counter > 5 ? 'Greater than 5' : 'Less than 5';
+      }
+    }
+  });
+
+</script>
+</body>
+</html>

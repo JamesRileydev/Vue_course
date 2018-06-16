@@ -1,0 +1,56 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <script src="vue.js"></script>
+
+
+<div id="app">
+  <p>{{title}}</p>
+  <button v-on:click="increase(2, $event)">Click Me</button>
+  <button v-on:click="counter++">Click Me</button>
+  <p>{{ counter }}</p>
+  <p>{{ counter > 10 ? 'Greater than 10' :  'Less than 10' }}</p>
+  <p v-on:mousemove="updateCoordinates">
+    Coordinates: {{x}} / {{y}}
+    - <span v-on:mousemove.stop="">DEAD SPOT</span> <!-- .prevent is another way to stop  -->
+    </p>
+    <input type="text" v-on:keyup.enter.space="alertMe"> 
+</div>
+
+<script>
+  new Vue({
+    el: '#app',
+    data: {
+      title: 'Hello World!',
+      counter: 0,
+      x: 0,
+      y: 0
+    },
+    methods: {
+      increase: function(step, event) {
+        this.counter += step;
+      },
+
+      updateCoordinates: function(event) {
+        this.x = event.clientX;
+        this.y = event.clientY;
+      },
+
+      alertMe: function() {
+        alert('Alert!');
+      }
+      //prevent
+      // dummy: function(event) {
+      //   event.stopPropagation();
+      // }
+    }
+  });
+
+</script>
+</body>
+</html>
