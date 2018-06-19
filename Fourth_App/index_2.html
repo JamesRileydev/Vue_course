@@ -12,11 +12,21 @@
 
 
   <div id="app">
-    <li v-for="(ingredient, i) in ingredients">{{ ingredient }} ({{ i }})</li>
+    <li v-for="(ingredient, i) in ingredients" :key="ingredient">{{ ingredient }} ({{ i }})</li>
     <template v-for="(ingredient, index) in ingredients">
       <p>{{ ingredient }}</p>
       <p>{{ index }}</p>
     </template>
+    <hr>
+    <button @click="ingredients.push('spices')">Add New</button>
+    <hr>
+    <ul>
+      <li v-for="person in persons">
+        <div v-for="(value, key, index) in person">{{key}}:{{value}} ({{index}})</div>
+      </li>
+    </ul>
+    <hr>
+    <span v-for="n in 10">{{n}}</span>
   </div>
 
   <script>
@@ -25,8 +35,8 @@
       data: {
         ingredients: ['crackers', 'fruit', 'cookies'],
         persons: [
-          {name: 'Jim', age: 43, color: 'gray'},
-          {name: 'Sarah', age: 36, color: 'gray'},
+          { name: 'Jim', age: 43, color: 'gray' },
+          { name: 'Sarah', age: 36, color: 'gray' },
         ]
       }
     });
